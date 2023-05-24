@@ -14,12 +14,12 @@ function App() {
 
   return (
     <>
-        <Nav/>
+        <Nav auth={isAuthenticated} toggleAuth={toggleIsAuthenticated} />
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/blogposts" element={<BlogPost/>}/>
-            <Route path="/blogposts/:blogId" element={<BlogPage/>}/>
+            <Route path="/login" element={<Login auth={isAuthenticated} toggleAuth={toggleIsAuthenticated}/>}/>
+            <Route path="/blogposts" element={isAuthenticated && <BlogPost/>}/>
+            <Route path="/blogposts/:blogId" element={isAuthenticated && <BlogPage/>}/>
         </Routes>
     </>
   );
